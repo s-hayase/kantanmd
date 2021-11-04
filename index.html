@@ -20,12 +20,19 @@
                 <li>
                     <h1>menu</h1>
                 </li>
-                <form id="form">
+                <form>
+                    <li><h3>file</h3></li>
                     <li>
-                        <input type="submit" value="ファイル出力">
+                        <input type="button" id="fileoutput" value="ファイル出力">
                         <input type="text" id="fileoutputname" placeholder="ファイル名を入力してください">
                     </li>
-                    <li><input type="file" id="file" value="ファイル読み込み"></li>
+                    <li><input type="file" id="fileload" value="ファイル読み込み"></li>
+
+                    <li><h3>local</h3></li>
+                    <div id="localfilelist"></div>
+                    <li><input type="button" id="fileloadlocal" value="ローカルファイル読み込み"></li>
+                    <li><input type="button" id="filesavelocal" value="ローカルファイル保存"></li>
+                    <li><input type="button" id="filedellocal" value="ローカルファイルの削除"></li>
                 </form>
             </ul>
         </div>

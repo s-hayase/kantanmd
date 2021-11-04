@@ -10,8 +10,6 @@ let cmEditor = CodeMirror.fromTextArea(document.getElementById('cmEditor'), {
 
 cmEditor.setSize("100%", "100%");
 
-console.log(cmEditor);
-
 cmEditor.on("change", () => {
   resultOutput.innerHTML = marked.parse(cmEditor.getValue());
   hljs.highlightAll();
@@ -27,8 +25,9 @@ cmEditor.on("focus", () => {
 
 
 //ファイル書き出し
-let form = document.getElementById("form");
-form.addEventListener("submit", () => {
+
+document.getElementById('fileoutput').addEventListener("click", () => {
+  console.log('A');
   const fileOutputName = document.getElementById(`fileoutputname`).value;
   let val = cmEditor.getValue();
   let blob = new Blob([val], { type: "text/markdown" });
@@ -39,7 +38,7 @@ form.addEventListener("submit", () => {
 });
 
 //ファイル読み込み
-form.addEventListener("change", (e) => {
+document.getElementById('fileload').addEventListener("change", (e) => {
   let file = e.target.files;
   let reader = new FileReader();
   reader.readAsText(file[0]);
@@ -48,6 +47,44 @@ form.addEventListener("change", (e) => {
     doc.setValue(reader.result);
   }
 });
+
+//ローカルファイル読み込み
+document.getElementById(`fileloadlocal`).addEventListener("click", () => {
+  let MemoData = null;
+  if (localStorage.length === 0) {
+      alert('メモは登録されていません。');
+      return;
+  }
+  else {
+      MemoData = localStorage.getItem('Memo' + (localStorage.length-1));
+      let doc = cmEditor.getDoc();
+      doc.setValue(MemoData);
+  }
+});
+// ローカルに保存
+document.getElementById(`filesavelocal`).addEventListener("click", () => {
+  let editorval = cmEditor.getValue();
+  localStorage.setItem('Memo' + localStorage.length, editorval);
+  alert('Memo' + localStorage.length+'保存が完了しました。');
+
+  // if (document.getElementById('localfilelist').childNodes.length == 0){
+  //   createList();
+  // }
+  addList();
+});
+
+let localfilelist = document.getElementById(`localfilelist`);
+
+
+function addList(){
+  localfilelist.insertAdjacentHTML('beforeend','<li><a>Memo'+(localStorage.length-1)+'</a></li>');
+}
+
+//ローカルクリア
+document.getElementById(`filedellocal`).addEventListener("click", () => {
+  localStorage.clear();
+});
+
 
 
 $(".openbtn").click(function () {//ボタンがクリックされたら
