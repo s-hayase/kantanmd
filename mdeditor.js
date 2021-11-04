@@ -13,7 +13,7 @@ cmEditor.setSize("100%", "100%");
 console.log(cmEditor);
 
 cmEditor.on("change", () => {
-  resultOutput.innerHTML = marked(cmEditor.getValue());
+  resultOutput.innerHTML = marked.parse(cmEditor.getValue());
   hljs.highlightAll();
 });
 
