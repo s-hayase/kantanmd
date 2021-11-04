@@ -66,7 +66,7 @@ $("#g-nav a").click(function () {//ナビゲーションのリンクがクリッ
 function toggleTabAcvive(onclickTabName) {
   if (onclickTabName) {
     //タブ設定
-    $('.tab li').find('a').each(function () { //タブ内のaタグ全てを取得
+    $('.tab li a').each(function () { //タブ内のaタグ全てを取得
       let tabName = $(this).attr('href'); //タブ内のaタグのリンク名 
       if (onclickTabName == tabName) { //リンク元の指定されたURLのハッシュタグ
         let parentElm = $(this).parent(); //タブ内のaタグの親要素（li）を取得
@@ -156,6 +156,5 @@ function toggleEditor(onclickTabName) {
 $('.tab a').on('click', function () {
   let idName = $(this).attr('href'); //タブ内のリンク名を取得  
   toggleTabAcvive(idName);//設定したタブの読み込みと
-  toggleEditor(idName);
-  //  return false;//aタグを無効にする
+  toggleEditor(idName);//aタグを無効にする
 });
