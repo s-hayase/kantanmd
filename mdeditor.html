@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="github.css">
+    <link rel="stylesheet" href="mdeditor.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/monokai-sublime.min.css">
+    <link rel="stylesheet" href="lib/codemirror.css">
+    <title>簡単MDエディタ</title>
+    <script src="mode/javascript/javascript.js"></script>
+</head>
+
+<body>
+    <div class="content">
+    <div class="openbtn"><span></span><span></span><span></span></div>
+    <nav id="g-nav">
+        <div id="g-nav-list">
+            <ul>
+                <li>
+                    <h1>menu</h1>
+                </li>
+                <form id="form">
+                    <li>
+                        <input type="submit" value="ファイル出力">
+                        <input type="text" id="fileoutputname" placeholder="ファイル名を入力してください">
+                    </li>
+                    <li><input type="file" id="file" value="ファイル読み込み"></li>
+                </form>
+            </ul>
+        </div>
+    </nav>
+    <div class="tab">
+        <li><a href="#modeEdit">編集</a></li>
+        <li><a href="#modeResult">プレビュー</a></li>
+    </div>
+
+        <div id="editor" class="editorarea">
+            <textarea id="cmEditor">シンプルなMDエディタです。&#10こちら側にテキストを入力してください。</textarea>
+        </div>
+        <div id="result" class="editorarea"></div>
+        </div>
+    </div>
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="lib/codemirror.js"></script>
+
+<script src="mode/markdown/markdown.js"></script>
+<script src="mdeditor.js"></script>
+
+<footer>
+
+</footer>
+
+</html>
