@@ -63,11 +63,7 @@ function init(){
     alert('メモは登録されていません。');
     return;
   }
-  if(localStorage.key(0)==='weblioObjFlg'){
-    console.log('A');
-    localStorage.clear();
-  }
-
+    localStorage.removeItem(weblioObjFlg);
     createList();
 }
 
