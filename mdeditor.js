@@ -67,7 +67,6 @@ function init(){
 }
 
 function createList(){
-
   for (key in localStorage) {
     if(key === 'weblioObjFlg'){
       localStorage.removeItem('weblioObjFlg');
