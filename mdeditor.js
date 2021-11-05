@@ -23,6 +23,7 @@ cmEditor.on("focus", () => {
   }
 });
 
+init();
 
 //ファイル書き出し
 
@@ -48,41 +49,54 @@ document.getElementById('fileload').addEventListener("change", (e) => {
   }
 });
 
-//ローカルファイル読み込み
-document.getElementById(`fileloadlocal`).addEventListener("click", () => {
-  let MemoData = null;
-  if (localStorage.length === 0) {
-      alert('メモは登録されていません。');
-      return;
-  }
-  else {
-      MemoData = localStorage.getItem('Memo' + (localStorage.length-1));
-      let doc = cmEditor.getDoc();
-      doc.setValue(MemoData);
-  }
-});
 // ローカルに保存
 document.getElementById(`filesavelocal`).addEventListener("click", () => {
   let editorval = cmEditor.getValue();
-  localStorage.setItem('Memo' + localStorage.length, editorval);
   alert('Memo' + localStorage.length+'保存が完了しました。');
-
-  // if (document.getElementById('localfilelist').childNodes.length == 0){
-  //   createList();
-  // }
-  addList();
+  localStorage.setItem('Memo' + localStorage.length, editorval);
+  let idname = 'Memo'+(localStorage.length-1);
+  addList(idname);
 });
 
-let localfilelist = document.getElementById(`localfilelist`);
+function init(){
+  if (localStorage.length === 0) {
+    alert('メモは登録されていません。');
+    return;
+  }
+//  if (document.getElementById('localfilelist').childNodes.length == 0){
+    createList();
+}
 
+function createList(){
+  for (key in localStorage) {
+    if (localStorage.hasOwnProperty(key)) {
+        addList(key);
+    }
+  }
+}
 
-function addList(){
-  localfilelist.insertAdjacentHTML('beforeend','<li><a>Memo'+(localStorage.length-1)+'</a></li>');
+function addList(idname){
+  let localfilelist = document.getElementById(`localfilelist`);
+  localfilelist.insertAdjacentHTML('afterbegin','<li><a href = # id = "'+idname+'">'+idname +'</a></li>');
+  document.getElementById(idname).addEventListener('click',()=>{
+    localfileload(idname);
+});
+}
+
+function localfileload(Memoname){
+  if(confirm(Memoname+'を読み込んでもいいですか')){
+    console.log(localStorage.getItem(Memoname));
+  let MemoData = localStorage.getItem(Memoname);
+  let doc = cmEditor.getDoc();
+  doc.setValue(MemoData);
+  }
 }
 
 //ローカルクリア
 document.getElementById(`filedellocal`).addEventListener("click", () => {
-  localStorage.clear();
+  if(confirm('本当に削除しますか？')){
+    localStorage.clear();
+  }
 });
 
 
