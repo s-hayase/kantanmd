@@ -63,7 +63,7 @@ function init(){
     alert('メモは登録されていません。');
     return;
   }
-    localStorage.removeItem(weblioObjFlg);
+    localStorage.removeItem('weblioObjFlg');
     createList();
 }
 
