@@ -64,6 +64,7 @@ function init(){
     return;
   }
   if(localStorage.key(0)==='weblioObjFlg'){
+    console.log('A');
     localStorage.clear();
   }
 
