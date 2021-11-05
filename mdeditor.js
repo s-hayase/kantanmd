@@ -98,6 +98,7 @@ function localfileload(Memoname){
 document.getElementById(`filedellocal`).addEventListener("click", () => {
   if(confirm('本当に削除しますか？')){
     localStorage.clear();
+    document.getElementById(`localfilelist`).innerHTML = "";
   }
 });
 
