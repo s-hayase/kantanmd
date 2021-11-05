@@ -61,9 +61,9 @@ document.getElementById(`filesavelocal`).addEventListener("click", () => {
 function init(){
   if (localStorage.length === 0) {
     alert('メモは登録されていません。');
+    localStorage.clear();
     return;
   }
-//  if (document.getElementById('localfilelist').childNodes.length == 0){
     createList();
 }
 
