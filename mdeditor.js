@@ -97,7 +97,7 @@ function localfileload(Memoname){
 //ローカルクリア
 document.getElementById(`filedellocal`).addEventListener("click", () => {
   if(confirm('本当に削除しますか？')){
-    document.getElementById(`localfilelist`).innerHTML = "";
+    document.getElementById(`localfilelist`).innerHTML = " ";
     localStorage.clear();
   }
 });
