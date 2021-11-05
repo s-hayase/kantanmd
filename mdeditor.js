@@ -61,9 +61,12 @@ document.getElementById(`filesavelocal`).addEventListener("click", () => {
 function init(){
   if (localStorage.length === 0) {
     alert('メモは登録されていません。');
-    localStorage.clear();
     return;
   }
+  if(localStorage.key(0)==='weblioObjFlg'){
+    localStorage.clear();
+  }
+
     createList();
 }
 
