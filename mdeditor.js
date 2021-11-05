@@ -70,7 +70,7 @@ function createList(){
 
   for (key in localStorage) {
     if(key === 'weblioObjFlg'){
-      localStorage.removeItem();
+      localStorage.removeItem('weblioObjFlg');
     }
     if (localStorage.hasOwnProperty(key)) {
         addList(key);
