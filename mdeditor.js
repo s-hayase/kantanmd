@@ -63,11 +63,11 @@ function init(){
     alert('メモは登録されていません。');
     return;
   }
-    localStorage.removeItem('weblioObjFlg');
     createList();
 }
 
 function createList(){
+  localStorage.removeItem('weblioObjFlg');
   for (key in localStorage) {
     if (localStorage.hasOwnProperty(key)) {
         addList(key);
